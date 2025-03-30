@@ -8,13 +8,20 @@ const emojis: Record<string, string> = {
   5: '😍',
 }
 
-const ExperienceRating = () => {
+const ExperienceRating = ({
+  value,
+  onValueChanged,
+}: {
+  value: number
+  onValueChanged: (value: number) => void
+}) => {
   return (
     <RatingGroup.Root
       count={5}
       flexDirection="column"
       alignSelf="start"
-      defaultChecked={false}
+      value={value}
+      onValueChange={(details) => onValueChanged(details.value)}
     >
       <RatingGroup.HiddenInput />
       <RatingGroup.Label>
